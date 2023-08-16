@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <link rel="stylesheet" href="../CSS/style2.css">
+    <style type="text/css">
+        html,
+        body,
+        .map {
+            width: 100%;
+            background: white!important;
+            height: 100%;
+            margin: 0px;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        header {
+            z-index: 999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 200px;
+            transition: 0.5s ease;
+        }
+        
+        header .brand {
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        
+        header .navigation {
+            position: relative;
+        }
+        
+        header .navigation .navigation-items a {
+            position: relative;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.3s ease;
+        }
+        
+        header .navigation .navigation-items a:before {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s ease;
+        }
+        
+        header .navigation .navigation-items a:hover:before {
+            width: 100%;
+        }
+        /*  */
+        
+        .home video {
+            z-index: 000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 1040px) {
+            header {
+                padding: 12px 20px;
+            }
+            section {
+                padding: 100px 20px;
+            }
+            .home .media-icons {
+                right: 15px;
+            }
+            header .navigation {
+                display: none;
+            }
+            header .navigation.active {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(1, 1, 1, 0.5);
+            }
+            header .navigation .navigation-items a {
+                color: #222;
+                font-size: 1.2em;
+                margin: 20px;
+            }
+            header .navigation .navigation-items a:before {
+                background: #222;
+                height: 5px;
+            }
+            header .navigation.active .navigation-items {
+                background: #fff;
+                width: 600px;
+                max-width: 600px;
+                margin: 20px;
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 5px;
+                box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+            }
+            .menu-btn {
+                background: url(menu.png)no-repeat;
+                background-size: 30px;
+                background-position: center;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+            .menu-btn.active {
+                z-index: 999;
+                background: url(close.png)no-repeat;
+                background-size: 25px;
+                background-position: center;
+                transition: 0.3s ease;
+            }
+        }
+        
+        @media (max-width: 560px) {
+            .home .content h1 {
+                font-size: 3em;
+                line-height: 60px;
+            }
+        }
+    </style>
+    <title>简易行政区地图标注</title>
+</head>
+
+<body>
+    <div style="display: block;width: 100%;height: 68px;">
+        <header style="background-color: black;width: 100%;height: 68px;">
+            <a href="#" class="brand">wildlife conservation</a>
+            <div class="menu-btn"></div>
+            <div class="navigation">
+                <div class="navigation-items">
+                    <a href="../top.html">首页</a>
+                    <a href="../main.html">物种树图</a>
+                    <a href="../example.html" style="color: greenyellow;">珍惜动物分布</a>
+                    <a href="../page2.html">各项数据</a>
+                    <a href="../last2.html">云词政策</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div style="display: block;padding-top: 68px;;width: 100%;height: 34px;position: absolute;">
+        <header style="background-color: rgb(4, 51, 125);width: 100%;height: 34px;">
+            <a href="one.html" class="brand">川金丝猴</a>
+            <a href="two.html" class="brand">中华白海豚</a>
+            <a href="three.html" class="brand" style="color: greenyellow;">丹顶鹤</a>
+            <a href="four.html" class="brand">朱鹮</a>
+            <a href="five.html" class="brand">褐马鸡</a>
+            <a href="six.html" class="brand">白鳍豚</a>
+            <a href="seven.html" class="brand">扬子鳄</a>
+            <a href="eight.html" class="brand">黑颈鹤</a>
+            <a href="nine.html" class="brand">麋鹿</a>
+            <a href="ten.html" class="brand">华南虎</a>
+        </header>
+    </div>
+    <div style="margin-top: 32px ;width: 100%;height: 650px;">
+        <div style="background-color: #7591AD;width: 25%;height: 650px;left: 75%;float: right;z-index: 10;">
+            <div class="card">
+                <div class="photo">
+                    <img src="../img/s3.jpg">
+                </div>
+                <h2>丹顶鹤</h2>
+                <p>丹顶鹤（学名：Grus japonensis）：是鹤科、鹤属的一种大型涉禽，体长120-160厘米。颈、脚较长，通体大多白色，头顶鲜红色，喉和颈黑色，耳至头枕白色，脚黑色，站立时颈、尾部飞羽和脚黑色，头顶红色，其余全为白色；飞翔时仅次级和三级飞羽以及颈、脚黑色，其余全白色，特征极明显，极易识别。幼鸟头、颈棕褐色，体羽白色而缀栗色。全世界的丹顶鹤总数至2010年估计仅有1500只左右，其中在中国境内越冬的有1000只左右。中国已经建立保护丹顶鹤为主的自然保护区已经超过18个，其中的吉林向海、湖南东洞庭湖、青海鸟岛和江西鄱阳湖等还被列入国际上的拉拇萨尔条约保护湿地目录之中。
+                </p>
+            </div>
+        </div>
+        <div id="container" class="map" tabindex="0" style="width: 75%;"></div>
+    </div>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=9d888be0a8a6c62f3770ea6df72f206d&plugin=Map3D,AMap.DistrictLayer,AMap.Scale,AMap.ToolBar"></script>
+    <script type="text/javascript" src="https://a.amap.com/jsapi_demos/static/demo-center/data/china-pp.js"></script>
+    <script type="text/javascript">
+        var SOC = 'CHN'
+        var colors = {};
+        var GDPSpeed = {
+            '520000': 1, //贵州
+            '540000': 1, //西藏
+            '530000': 6, //云南 
+            '500000': 1, //重庆
+            '360000': 6, //江西
+            '340000': 6, //安徽
+            '510000': 1, //四川
+            '350000': 1, //福建
+            '430000': 1, //湖南
+            '420000': 6, //湖北
+            '410000': 6, //河南
+            '330000': 1, //浙江
+            '640000': 1, //宁夏
+            '650000': 1, //新疆
+            '440000': 1, //广东
+            '370000': 6, //山东
+            '450000': 1, //广西
+            '630000': 1, //青海
+            '320000': 6, //江苏
+            '140000': 1, //山西
+            '460000': 1, // 海南
+            '310000': 1, //上海
+            '110000': 1, // 北京
+            '130000': 6, // 河北
+            '230000': 6, // 黑龙江
+            '220000': 6, // 吉林
+            '210000': 6, //辽宁
+            '150000': 6, //内蒙古
+            '120000': 1, // 天津
+            '620000': 1, // 甘肃
+            '610000': 6, // 陕西
+            '710000': 6, //台湾
+            '810000': 1, //香港
+            '820000': 1 //澳门
+
+        }
+        var getColorByDGP = function(adcode) {
+            if (!colors[adcode]) {
+                var gdp = GDPSpeed[adcode];
+                if (!gdp) {
+                    colors[adcode] = 'rgb(227,227,227)'
+                } else {
+                    var r = 3;
+                    var g = 140;
+                    var b = 230;
+                    var a = gdp / 10;
+                    colors[adcode] = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+                }
+            }
+            return colors[adcode]
+        }
+        var disCountry = new AMap.DistrictLayer.Country({
+            zIndex: 10,
+            SOC: 'CHN',
+            depth: 1,
+            styles: {
+                'nation-stroke': '#ff0000',
+                'coastline-stroke': '#0088ff',
+                'province-stroke': '#888888',
+                'fill': function(props) {
+                    return getColorByDGP(props.adcode_pro)
+                }
+            }
+        })
+
+        var map = new AMap.Map("container", {
+            zooms: [4, 8],
+            center: [106.122082, 33.719192],
+            zoom: 4,
+            isHotspot: false,
+            defaultCursor: 'pointer',
+            layers: [
+                disCountry
+            ],
+            viewMode: '2D',
+            resizeEnable: true
+        })
+        map.addControl(new AMap.Scale());
+        map.addControl(new AMap.ToolBar({
+            liteStyle: true
+        }));
+        map.on('complete', function() {
+            var layer = new AMap.LabelsLayer({
+                // 开启标注避让，默认为开启，v1.4.15 新增属性
+                collision: false,
+                // 开启标注淡入动画，默认为开启，v1.4.15 新增属性
+                animation: true,
+            });
+            for (var i = 0; i < LabelsData.length; i++) {
+                var labelsMarker = new AMap.LabelMarker(LabelsData[i]);
+                layer.add(labelsMarker);
+            }
+            map.add(layer);
+            document.getElementsByClassName('amap-mcode')[0].innerHTML = '-GS(2021)648号'
+        })
+    </script>
+    <script>
+        document.getElementsByClassName('amap-mcode')[0].innerHTML = '- GS(2021)6375号、GS(2021)648号'
+            // 构造下拉框
+        var optArr = adcodes.map(function(item) {
+            if (item.adcode == 100000) {
+                item.name = '选择省市';
+            }
+
+            return '<option ' + (item.adcode == adCode ? 'selected' : '') + ' value="' + item.adcode + '">' + item.name + '</option>';
+        });
+
+        document.getElementById('adcode-list').innerHTML = optArr.join('');
+    </script>
+</body>
+
+</html>

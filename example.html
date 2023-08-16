@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>分布图页</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+    <link rel="stylesheet" href="CSS/ini.css">
+    <link rel="stylesheet" href="CSS/style1.css">
+    <script>
+        $(function() {
+            var li = $('#tabs');
+            var cc = $('#tabs option');
+            var len = cc.length;
+            li.change(function() {
+                var t = parseInt(li.get(0).selectedIndex);
+                for (var i = 0; i < len; i++) {
+                    if (t == i) {
+                        $('#chanpin' + t).show();
+                    } else {
+                        $('#chanpin' + i).hide();
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+        /*重置默认的外边距和内边距*/
+        
+        * {
+            margin: 10;
+            padding: 10;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+         ::-webkit-scrollbar-track-piece {
+            background-color: #CCCCCC;
+            -webkit-border-radius: 6px;
+        }
+        
+         ::-webkit-scrollbar-thumb:vertical {
+            height: 5px;
+            background-color: #999999;
+            -webkit-border-radius: 6px;
+        }
+        
+         ::-webkit-scrollbar-thumb:horizontal {
+            width: 5px;
+            background-color: #CCCCCC;
+            -webkit-border-radius: 6px;
+        }
+        /*常用标签的样式重置*/
+        
+        i {
+            font-style: normal;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        input {
+            outline: none;
+            border: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        /*设定html和body的宽度为100%*/
+        
+        html,
+        body {
+            width: 100%;
+            font: 14px/150% tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            /* color: #666; */
+            height: 100%;
+            background-image: url(img/bg2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .selector {
+            margin: 10px 5px 0 0;
+            /* float: right; */
+        }
+        
+        #content .active {
+            display: block;
+        }
+        
+        .chart {
+            width: 700px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        
+        .none {
+            display: none;
+        }
+        
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            clip-path: circle(0% at 0 50%);
+        }
+        
+        .video-slide.active {
+            clip-path: circle(150% at 0 50%);
+            transition: 2s ease;
+            transition-property: clip-path;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: block;width: 100%;height: 68px;">
+        <header style="background-color: black;width: 100%;height: 68px;">
+            <a href="#" class="brand">wildlife conservation</a>
+            <div class="menu-btn"></div>
+            <div class="navigation">
+                <div class="navigation-items">
+                    <a href="top.html">首页</a>
+                    <a href="main.html">物种树图</a>
+                    <a href="example.html" style="color: greenyellow;">珍惜动物分布</a>
+                    <a href="page2.html">各项数据</a>
+                    <a href="last2.html">云词政策</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <section style="position: relative;height: 800px;">
+        <!-- <video class="video-slide active" src="3.mp4" autoplay muted loop></video> -->
+        <div style="width: 800px;height: 650px;background-color: rgba(242, 242, 242,1);position: absolute;left: 24%;margin-top: 50px;">
+            <select name="status" id="tabs" class="selector" style="margin-left: 5px;">
+                    <!--<option>ALL</option>-->
+                   <option>川金丝猴</option>
+                   <option>中华白海豚</option>
+                   <option>丹顶鹤</option>
+                   <option>朱鹮</option>
+                   <option>褐马鸡</option>
+                   <option>白鳍豚</option>
+                   <option>扬子鳄</option>
+                   <option>黑颈鹤</option>
+                   <option>麋鹿</option>
+                   <option>华南虎</option>
+               </select>
+            <div id="content">
+                <div id="chanpin0" class="none active">
+                    <div id="main1" class="chart"></div>
+                </div>
+
+                <div id="chanpin1" class="none">
+                    <div id="main2" class="chart"></div>
+                </div>
+
+                <div id="chanpin2" class="none">
+                    <div id="main3" class="chart"></div>
+                </div>
+
+                <div id="chanpin3" class="none">
+                    <div id="main4" class="chart"></div>
+                </div>
+
+                <div id="chanpin4" class="none">
+                    <div id="main5" class="chart"></div>
+                </div>
+
+                <div id="chanpin5" class="none">
+                    <div id="main6" class="chart"></div>
+                </div>
+
+                <div id="chanpin6" class="none">
+                    <div id="main7" class="chart"></div>
+                </div>
+
+                <div id="chanpin7" class="none">
+                    <div id="main8" class="chart"></div>
+                </div>
+
+                <div id="chanpin8" class="none">
+                    <div id="main9" class="chart"></div>
+                </div>
+
+                <div id="chanpin9" class="none">
+                    <div id="main10" class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <video class="video-slide active" src="1.mp4" autoplay muted loop style="display: flex;"></video> -->
+    <script src="js/innnn.js"></script>
+</body>
+
+</html>

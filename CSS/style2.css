@@ -1,0 +1,134 @@
+:root {
+    --background-color: #2c3e50;
+    --border-color: #7591AD;
+    --text-color: #34495e;
+    --color1: #EC3E27;
+    --color2: #fd79a8;
+    --color3: #0984e3;
+    --color4: #00b894;
+    --color5: #fdcb6e;
+    --color6: #e056fd;
+    --color7: #F97F51;
+    --color8: #BDC581;
+    --a_border_color: #86a3b3;
+    --h2_border_color: #8ea2b8;
+    --a_hover_background_color: #86a3b3;
+    --font_color: #e8f6fd;
+}
+
+html .card {
+    font-size: 12px;
+}
+
+body .card {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+}
+
+.card {
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* margin: 20px; */
+    background-color: var(--border-color);
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 30px #2c2c2c;
+    color: var(--font_color)
+}
+
+.photo {
+    position: absolute;
+    /* 默认为放大 */
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    border-radius: 0%;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.photo::before {
+    /* 通过before增加渐变背景实现遮罩，让文字默认看起来清晰一些 */
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, #333, transparent);
+}
+
+.card:hover .photo::before {
+    /* 缩小时隐藏 */
+    display: none;
+}
+
+.photo img {
+    /* 图片高宽均为100% */
+    /* 然后按照cover缩放，裁切长边 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover .photo {
+    /* 鼠标移上变小 */
+    width: 120px;
+    height: 120px;
+    top: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #111;
+}
+
+.card h1 {
+    position: absolute;
+    top: 38px;
+    transition: 0.5s;
+}
+
+.card:hover h1 {
+    position: absolute;
+    top: 100px;
+}
+
+.card h2 {
+    margin-top: 40px;
+    width: 80%;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--h2_border_color);
+}
+
+.card p {
+    width: 90%;
+    /* 段落缩进2个字符大小 */
+    text-indent: 2em;
+    font-size: 12px;
+    margin-bottom: 5px;
+    line-height: 30px;
+}
+
+.card a {
+    color: var(--font_color);
+    text-decoration: none;
+    padding: 12px 36px;
+    border: 1px solid var(--a_border_color);
+    border-radius: 8px;
+}
+
+.card a:hover {
+    color: #Fff;
+    background-color: var(--a_hover_background_color);
+}

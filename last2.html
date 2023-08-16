@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>分布图页</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/echarts.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+    <link rel="stylesheet" href="CSS/ini.css">
+    <link rel="stylesheet" href="CSS/style1.css">
+    <script>
+        $(function() {
+            var li = $('#tabs');
+            var cc = $('#tabs option');
+            var len = cc.length;
+            li.change(function() {
+                var t = parseInt(li.get(0).selectedIndex);
+                for (var i = 0; i < len; i++) {
+                    if (t == i) {
+                        $('#chanpin' + t).show();
+                    } else {
+                        $('#chanpin' + i).hide();
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+        .selector {
+            margin: 10px 5px 0 0;
+            /* float: right; */
+        }
+        
+        #content .active {
+            display: block;
+        }
+        
+        .chart {
+            width: 700px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        
+        .none {
+            display: none;
+        }
+        
+        .video-slide {
+            position: absolute;
+            width: 100%;
+            clip-path: circle(0% at 0 50%);
+        }
+        
+        .video-slide.active {
+            clip-path: circle(150% at 0 50%);
+            transition: 2s ease;
+            transition-property: clip-path;
+        }
+        
+        div marquee {
+            height: 40px;
+            margin-top: 25px;
+        }
+        
+        .tb>h3 {
+            background: url(img/titleioc.png) left center no-repeat;
+            text-indent: 27px;
+            margin-left: 20px;
+            margin-top: 15px;
+            height: 33px;
+            line-height: 33px;
+            font-size: 24px;
+            width: 90%;
+            color: #fff;
+            font-weight: 100;
+        }
+        
+        .gxlist {
+            /* float: right; */
+            margin-left: 10%;
+            width: 400px;
+            height: 650px;
+            margin-right: 15px;
+            background: rgba(12, 16, 54, 0.7);
+            position: static;
+        }
+        
+        .gxlist ul {
+            margin-top: 40px;
+            width: 100%;
+            height: 80px;
+        }
+        
+        .gxlist ul li {
+            width: 400px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 18px;
+            color: #fff;
+            text-align: 3px;
+            border-bottom: 1px dashed #4B4F6C;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: block;width: 100%;height: 68px;">
+        <header style="background-color: black;width: 100%;height: 68px;">
+            <a href="#" class="brand">wildlife conservation</a>
+            <div class="menu-btn"></div>
+            <div class="navigation">
+                <div class="navigation-items">
+                    <a href="top.html">首页</a>
+                    <a href="main.html">物种树图</a>
+                    <a href="shida_html/one.html">珍惜动物分布</a>
+                    <a href="page2.html">各项数据</a>
+                    <a href="last2.html" style="color: greenyellow;">云词政策</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <section style="background-color:black; position: relative;height: 800px;">
+        <video class="video-slide active" src="3.mp4" autoplay muted loop></video>
+        <div style="position: absolute;left: 1%;background-color: rgba(2, 179, 249, 0.1);width: 70%;height: 80%;margin-top: 4%;border-radius: 5%;" border>
+            <marquee scrollamount=" 4 ">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font size="4px " color="#80ffff ">生物多样性</font>
+            </marquee>
+
+            <marquee scrollamount="6 ">
+                <font size="4px " color="#e3f9cb " scrollamount="8 ">生态系统</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#80ffff ">生态平衡</font>
+            </marquee>
+
+            <marquee scrollamount="9 ">
+                <font size="3.2px " color="powderblue ">非法捕捞</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font size="3px " color="#80ffff ">生物入侵</font>
+            </marquee>
+
+            <marquee scrollamount="8 ">
+                <font size="5.4px " color="#ddfbec " style="height:50px "> 动保意识</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font size="3.6px " color="#e3f9cb ">自然保护区</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#F2F2F2 ">生态价值</font>
+            </marquee>
+
+            <marquee scrollamount="7 ">
+                <font color="#f1e5fc ">中华人民共和国野生动物保护法</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#F2F2F2 ">凝聚生物多样性保护力量</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#F2F2F2 ">繁育档案</font>
+            </marquee>
+
+            <marquee scrollamount="7 ">
+                <font color="#f1e5fc ">野生动物保护管理</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#F2F2F2 ">生态文明建设</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#F2F2F2 ">普法宣传</font>
+            </marquee>
+
+            <marquee scrollamount="5 ">
+                <font size="4px " color="#e3f9cb " scrollamount="8 ">保护与修复</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#80ffff ">社会风气</font>
+            </marquee>
+
+            <marquee scrollamount="9 ">
+                <font size="4px " color="#e3f9cb " scrollamount="8 ">物种保护体系</font>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color="#80ffff ">救护机构</font>
+            </marquee>
+        </div>
+        <div style="position: absolute;left: 70%;height:80%">
+            <div class="gxlist tb ">
+                <h3 style="margin-top: 15%;color: rgb(255, 255, 255); ">
+                    政策法规
+                </h3>
+                <ul>
+                    <a href="http://www.forestry.gov.cn/main/151/20210225/112119430483186.html">
+                        <li>新调整的《国家重点保护野生动物名录》公布</li>
+                    </a>
+                    <a href="http://www.forestry.gov.cn/html/bwwz/bwwz_2790/20191202101942901794339/file/20191202102502527120782.pdf">
+                        <li>濒危野生动植物种国际贸易公约</li>
+                    </a>
+                    <a href="http://www.gov.cn/govweb/xinwen/2014-06/13/content_2700168.htm">
+                        <li>世界自然保护联盟发布最新濒危物种红色名录</li>
+                    </a>
+                    <a href="http://www.gov.cn/zhengce/zhengceku/2023-02/06/content_5740327.htm">
+                        <li>国家林业和草原局公告</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2022-02/10/content_5672915.htm">
+                        <li>云南乌蒙山自然保护区监测到20种国家重点保护...</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2021-04/15/content_5599885.htm#1">
+                        <li>海南：放归国家重点保护野生动物</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2021-02/05/content_5585183.htm#1 ">
+                        <li>新国家重点保护野生动物名录公布</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2021-10/10/content_5641676.htm">
+                        <li>云南省发布20项野生动物保护地方标准</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2021-10/10/content_5641676.htm">
+                        <li>国家林草局部署加强秋冬季候鸟等野生动物保护</li>
+                    </a>
+                    <a href="http://www.gov.cn/xinwen/2020-06/19/content_5520530.htm">
+                        <li>国家重点保护野生动物名录拟调整！两部门公开...</li>
+                    </a>
+                    <a href="http://www.npc.gov.cn/npc/c12435/201811/f4d2b7a3024b41ee8ea0ce54ac117daa.shtml">
+                        <li>《 中华人民共和国野生动物保护法》第三次修正</li>
+                    </a>
+                    <a href="http://www.forestry.gov.cn/main/151/20200527/090625291375015.html">
+                        <li>《中华人民共和国缔结或者参加的国际公约禁止或者限制贸易的野生动物或者其制品名录》</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
